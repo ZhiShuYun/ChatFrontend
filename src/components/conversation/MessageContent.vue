@@ -23,7 +23,10 @@ import {
   ERROR_CODE_NO_CONVERSATION,
   ERROR_CODE_USED_UP,
   ERROR_CODE_UNKNOWN,
-  ERROR_CODE_TIMEOUT
+  ERROR_CODE_TIMEOUT,
+  ERROR_CODE_TOKEN_MISMATCHED,
+  ERROR_CODE_CONTENT_TOO_LARGE,
+  ERROR_CODE_TOO_MANY_REQUESTS
 } from '@/constants';
 import AnsweringMark from './AnsweringMark.vue';
 
@@ -88,6 +91,15 @@ export default defineComponent({
       }
       if (this.error?.code === ERROR_CODE_TIMEOUT) {
         return this.$t('conversation.message.errorTimeout');
+      }
+      if (this.error?.code === ERROR_CODE_TOKEN_MISMATCHED) {
+        return this.$t('conversation.message.errorTokenMismatched');
+      }
+      if (this.error?.code === ERROR_CODE_TOO_MANY_REQUESTS) {
+        return this.$t('conversation.message.errorTooManyRequests');
+      }
+      if (this.error?.code === ERROR_CODE_CONTENT_TOO_LARGE) {
+        return this.$t('conversation.message.errorContentTooLarge');
       }
       return undefined;
     }

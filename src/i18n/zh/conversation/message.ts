@@ -14,7 +14,7 @@ export default {
   generateInCorrect: '可能偶尔产生不正确的信息',
   generateHarmfulInfo: '可能偶尔产生有害的指令或有偏见的内容',
   onlyKnowBefore2021: '对2021年之后的世界和事件了解有限',
-  errorBusy: 'Worker正在忙碌中，请稍后重试',
+  errorBusy: 'Worker 正在忙碌中，请稍后重试',
   errorApiError: '回答失败，请稍后重试',
   errorBadRequest: '请求内容不规范，请重新提问',
   errorNoConversation: '对话内容不存在或者已经过期，请发起新的会话',
@@ -22,6 +22,9 @@ export default {
   errorUsedUp: '您的套餐次数已经用完，请购买更多次数继续使用',
   errorUnknown: '服务器出现未知错误，请稍后重试或联系客服',
   errorTimeout: '回答问题超时，请稍后重试',
+  errorContentTooLarge: '输入字数过多，请减少输入字数',
+  errorTooManyRequests: '请求过于频繁，请稍后重试',
+  errorTokenMismatched: '请求 Token 和 API 不一致',
   howToBreakLine: '按 Shift+Enter 键可以换行',
   remainingCount: '剩余次数',
   usedCount: '使用次数'

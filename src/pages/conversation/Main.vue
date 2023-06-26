@@ -58,7 +58,7 @@ import { IMessage, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import { ElRow, ElCol, ElMessage, ElSelect, ElOption } from 'element-plus';
 import Message from '@/components/conversation/Message.vue';
-import { chatgpt4Operator, chatgptOperator } from '@/operators/api/chatgpt/operator';
+import { chatgpt4Operator, chatgptOperator, chatgpt4BrowsingOperator } from '@/operators/api/chatgpt/operator';
 import NewMessageBox from '@/components/conversation/NewMessageBox.vue';
 import { chatgptAvatar, userAvatar } from '@/constants/image';
 import {
@@ -74,7 +74,7 @@ import { ROUTE_AUTH_LOGIN, ROUTE_CONVERSATION_DETAIL, ROUTE_CONVERSATION_NEW } f
 import {
   APIS,
   API_ID_CHATGPT,
-  DEFAULT_API,
+  API_ID_CHATGPT4_BROWSING,
   ENDPOINT,
   ERROR_CODE_CANCELED,
   ERROR_CODE_DUPLICATION,
@@ -329,7 +329,12 @@ export default defineComponent({
         this.scrollDown();
       }, 100);
       this.canceler = new AbortController();
-      const operator = this.activeApiId === API_ID_CHATGPT ? chatgptOperator : chatgpt4Operator;
+      const operator =
+        this.activeApiId === API_ID_CHATGPT
+          ? chatgptOperator
+          : this.activeApiId === API_ID_CHATGPT4_BROWSING
+          ? chatgpt4BrowsingOperator
+          : chatgpt4Operator;
       operator
         .post(
           {

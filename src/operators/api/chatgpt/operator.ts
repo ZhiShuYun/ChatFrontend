@@ -26,3 +26,14 @@ class ChatGPT4Operator {
 }
 
 export const chatgpt4Operator = new ChatGPT4Operator();
+
+class ChatGPT4BrowsingOperator {
+  async post(data: IRequest, query: IQuery, config?: AxiosRequestConfig): Promise<AxiosResponse<IResponse>> {
+    return await axios.post(`/chatgpt4-browsing`, data, {
+      ...config,
+      params: query
+    });
+  }
+}
+
+export const chatgpt4BrowsingOperator = new ChatGPT4BrowsingOperator();
