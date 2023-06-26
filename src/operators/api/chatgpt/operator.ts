@@ -16,6 +16,17 @@ class ChatGPTOperator {
 
 export const chatgptOperator = new ChatGPTOperator();
 
+class ChatGPT16KOperator {
+  async post(data: IRequest, query: IQuery, config?: AxiosRequestConfig): Promise<AxiosResponse<IResponse>> {
+    return await axios.post(`/chatgpt-16k`, data, {
+      ...config,
+      params: query
+    });
+  }
+}
+
+export const chatgpt16KOperator = new ChatGPT16KOperator();
+
 class ChatGPT4Operator {
   async post(data: IRequest, query: IQuery, config?: AxiosRequestConfig): Promise<AxiosResponse<IResponse>> {
     return await axios.post(`/chatgpt4`, data, {

@@ -58,7 +58,12 @@ import { IMessage, IMessageState } from '@/operators/message/models';
 import { defineComponent } from 'vue';
 import { ElRow, ElCol, ElMessage, ElSelect, ElOption } from 'element-plus';
 import Message from '@/components/conversation/Message.vue';
-import { chatgpt4Operator, chatgptOperator, chatgpt4BrowsingOperator } from '@/operators/api/chatgpt/operator';
+import {
+  chatgpt4Operator,
+  chatgptOperator,
+  chatgpt4BrowsingOperator,
+  chatgpt16KOperator
+} from '@/operators/api/chatgpt/operator';
 import NewMessageBox from '@/components/conversation/NewMessageBox.vue';
 import { chatgptAvatar, userAvatar } from '@/constants/image';
 import {
@@ -75,6 +80,7 @@ import {
   APIS,
   API_ID_CHATGPT,
   API_ID_CHATGPT4_BROWSING,
+  API_ID_CHATGPT_16K,
   ENDPOINT,
   ERROR_CODE_CANCELED,
   ERROR_CODE_DUPLICATION,
@@ -334,6 +340,8 @@ export default defineComponent({
           ? chatgptOperator
           : this.activeApiId === API_ID_CHATGPT4_BROWSING
           ? chatgpt4BrowsingOperator
+          : this.activeApiId === API_ID_CHATGPT_16K
+          ? chatgpt16KOperator
           : chatgpt4Operator;
       operator
         .post(
